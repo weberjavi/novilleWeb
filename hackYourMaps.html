@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'/>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src='http://underscorejs.org/underscore-min.js'></script>
+<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />
+<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
+<style>
+body {
+  margin:0px;
+  padding:0px;
+  font:normal 15px/20px  Lato, sans-serif;
+  background:#fff;
+  }
+
+article {
+  width:33.3333%;
+  min-width:320px;
+  position:relative;
+  padding-top:40px;
+  padding-bottom:33.3333%;
+  }
+section {
+  padding:10px;
+  margin-left:40px;
+  margin-bottom: 20px;
+  position:relative;
+  transition:background 500ms, color 500ms;
+  -moz-transition:background 500ms, color 500ms;
+  -webkit-transition:background 500ms, color 500ms;
+  }
+section,
+section a {
+  color:#888;
+  color:rgba(128,128,128,0);
+  text-decoration:none;
+  text-shadow:rgba(64,64,64,1) 0px 0px 4px;
+  }
+section.active {
+  background-color: rgba(138,34,35,0.8);
+  color:black;
+  text-shadow:none;
+  }
+section.active p { color:white; }
+section.active small { color:#aaa; }
+h1 { font-size:2em; line-height:1em; text-transform: uppercase; }
+h2 { font-size:1.3333em; text-transform: uppercase;}
+h1,h2 { margin:0px 0px 10px; }
+p { margin:0px; }
+
+
+.scroll {
+  /*position:absolute;*/
+  /*right:0px; bottom:0px;*/
+  margin-top: 50px;
+  font-size:10px;
+  text-transform:uppercase;
+  padding:5px 10px;
+  }
+.colophon {
+  display:block;
+  margin-top:10px;
+  }
+
+.cover:before {
+  content:'';
+  display:block;
+  width:120px; height:120px;
+  margin:0px auto 20px;
+  }
+/*.cover.active:before { background:url(sprite.png) 0px -120px no-repeat; }*/
+
+#pane {
+  position:fixed;
+  top:0px;
+  bottom:0px;
+  right:0px;
+  width:66.6666%;
+  }
+#map_contexto  {
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  width:200%;
+  left:-50%;
+  transition:opacity 250ms;
+  -moz-transition:opacity 250ms;
+  -webkit-transition:opacity 250ms;
+  }
+
+.spot {
+  width:120px;
+  height:120px;
+  margin:-60px 0px 0px -60px;
+  background:url(sprite.png) 120px 120px no-repeat;
+  position:absolute;
+  }
+.spot-cover { display:none; }
+.spot-baker { background-position:-130px 0px; }
+.spot-baker.active { background-position:-130px -120px; }
+.spot-aldgate { background-position:-260px 0px; }
+.spot-aldgate.active { background-position:-260px -120px; }
+.spot-london-bridge { background-position:-390px 0px; }
+.spot-london-bridge.active { background-position:-390px -120px; }
+.spot-woolwich { background-position:-520px 0px; }
+.spot-woolwich.active { background-position:-520px -120px; }
+.spot-gloucester { background-position:-650px 0px; }
+.spot-gloucester.active { background-position:-650px -120px; }
+.spot-caulfield-gardens { background-position:-780px 0px; }
+.spot-caulfield-gardens.active { background-position:-780px -120px; }
+.spot-telegraph { background-position:-910px 0px; }
+.spot-telegraph.active { background-position:-910px -120px; }
+.spot-charing-cross { background-position:-1040px 0px; }
+.spot-charing-cross.active { background-position:-1040px -120px; }
+
+/* Distinguish the "cover page" visually other sections. */
+body.section-0 #map_contexto { opacity:1; }
+</style>
+</head>
+<body class='section-0'>
+
+<div id='pane'><div id='map_contexto'></div></div>
+
+<article>
+  <section id='cover' class='cover active'>
+    <h1>politica exterior del estado romano</h1>
+    <p>Influencia en el poblamiento del Noroeste de la Península Ibérica</p>
+    <small class='scroll'>Scroll ▼</small>
+  </section>
+  <section id='baker'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='aldgate'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='london-bridge'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='woolwich'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='gloucester'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='caulfield-gardens'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <section id='telegraph'>
+    <h2>Lorem ipsum</h2>
+    <p>Holmes and Watson head to The Daily Telegraph and place an ad to draw out the criminal. It reads: "To-night. Same hour. Same place. Two taps. Most vitally important. Your own safety at stake. Pierrot." The trap works and Holmes catches the criminal: Colonel Valentine Walter, the brother of Woolwich Arsenal's chief. He confesses to working for Hugo Oberstein to obtain the submarine plans in order to pay off his debts.</p>
+  </section>
+  <section id='charing-cross'>
+    <h2>Lorem ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <!--<small class='colophon'>
+      Adapted from <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a><br/>
+      Map data &copy; <a href='http://openstreetmap.org/copyright'>OpenStreetMap Contributors</a><br/>
+      Map design &copy; <a href='http://mapbox.com/about/maps/'>MapBox</a>
+    </small>-->
+  </section>
+</article>
+
+<script>
+var geojson = [
+  { "geometry": { "type": "Point", "coordinates": [12.493745, 41.908401] },
+    "properties": { "id": "cover", "zoom": 5 } },
+  { "geometry": { "type": "Point", "coordinates": [12.493745, 41.908401] },
+    "properties": { "id": "baker", "zoom": 6 } },
+  { "geometry": { "type": "Point", "coordinates": [-8.399299, 43.374660] },
+    "properties": { "id": "aldgate", "zoom": 7 } },
+  { "geometry": { "type": "Point", "coordinates": [ -8.723396, 42.420973] },
+    "properties": { "id": "london-bridge", "zoom": 8 } },
+  { "geometry": { "type": "Point", "coordinates": [-8.882698, 42.453405] },
+    "properties": { "id": "woolwich" , "zoom": 9} },
+  { "geometry": { "type": "Point", "coordinates": [-8.388313, 43.346703] },
+    "properties": { "id": "gloucester", "zoom": 11 } },
+  { "geometry": { "type": "Point", "coordinates": [-8.654731, 41.145104] },
+    "properties": { "id": "caulfield-gardens", "zoom": 12 } },
+  { "geometry": { "type": "Point", "coordinates": [-8.867654, 41.891479] },
+    "properties": { "id": "telegraph" , "zoom": 13} },
+  { "geometry": { "type": "Point", "coordinates": [-7.538308, 42.986001] },
+    "properties": { "id": "charing-cross" , "zoom": 10} }
+];
+var tiles = mapbox.layer().tilejson({
+  tiles: [ "http://tile.stamen.com/toner-lite/{z}/{x}/{y}.jpg" ]
+});
+var spots = mapbox.markers.layer()
+  // Load up markers from geojson data.
+  .features(geojson)
+  // Define a new factory function. Takes geojson input and returns a
+  // DOM element that represents the point.
+  .factory(function(f) {
+    var el = document.createElement('div');
+    el.className = 'spot spot-' + f.properties.id;
+    return el;
+  });
+
+// Creates the map with tile and marker layers and
+// no input handlers (mouse drag, scrollwheel, etc).
+var map = mapbox.map('map_contexto', [tiles, spots], null, []);
+
+// Array of story section elements.
+var sections = document.getElementsByTagName('section');
+
+// Array of marker elements with order matching section elements.
+var markers = _(sections).map(function(section) {
+  return _(spots.markers()).find(function(m) {
+    return m.data.properties.id === section.id;
+  });
+});
+
+// Helper to set the active section.
+var setActive = function(index, ease) {
+  // Set active class on sections, markers.
+  _(sections).each(function(s) { s.className = s.className.replace(' active', '') });
+  _(markers).each(function(m) { m.element.className = m.element.className.replace(' active', '') });
+  sections[index].className += ' active';
+  markers[index].element.className += ' active';
+
+  // Set a body class for the active section.
+  document.body.className = 'section-' + index;
+
+  // Ease map to active marker.
+  if (!ease) {
+    map.centerzoom(markers[index].location, markers[index].data.properties.zoom||14);
+  } else {
+    map.ease.location(markers[index].location).zoom(markers[index].data.properties.zoom||14).optimal(0.3, 1.00);
+  }
+
+  return true;
+};
+
+// Bind to scroll events to find the active section.
+window.onscroll = _(function() {
+  // IE 8
+  if (window.pageYOffset === undefined) {
+    var y = document.documentElement.scrollTop;
+    var h = document.documentElement.clientHeight;
+  } else {
+    var y = window.pageYOffset;
+    var h = window.innerHeight;
+  }
+
+  // If scrolled to the very top of the page set the first section active.
+  if (y === 0) return setActive(0, true);
+
+  // Otherwise, conditionally determine the extent to which page must be
+  // scrolled for each section. The first section that matches the current
+  // scroll position wins and exits the loop early.
+  var memo = 0;
+  var buffer = (h * 0.3333);
+  var active = _(sections).any(function(el, index) {
+    memo += el.offsetHeight;
+    return y < (memo-buffer) ? setActive(index, true) : false;
+  });
+
+  // If no section was set active the user has scrolled past the last section.
+  // Set the last section active.
+  if (!active) setActive(sections.length - 1, true);
+}).debounce(10);
+
+// Set map to first section.
+setActive(0, false);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+@charset "UTF-8";
+/*
+Hoja de estilos principal de la web del yacimiento arqueológico de Noville.
+Este archivo de sass (scss/style.scss) se "compilara" en el archivo css css/style.css*/
+/*VARIABLES
+
+colores*/
+/********************************************************************************
+         ESTILOS GENERALES (elementos de la página abierta por primera vez)
+********************************************************************************/
+body {
+  background-color: #f5f5f5;
+  font-family: 'Lato', sans-serif;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #f5f5f5;
+  text-align: center;
+  bottom: 10px;
+  z-index: -1;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-bottom: 2em;
+}
+
+nav ul li a {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #8A2223;
+  letter-spacing: 0.2em;
+  margin-top: 0.5;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  max-width: 600px;
+  margin-top: 10px;
+}
+
+.logo {
+  max-width: 400px;
+  display: block;
+  margin: 20px auto;
+}
+
+/*****************************************************************
+       Estilos del diálogo de la ventana "modal" y el overlay 
+       generado al utilizar la navegación superior.
+******************************************************************/
+.md-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  max-width: 630px;
+  min-width: 320px;
+  height: auto;
+  z-index: 2000;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+  visibility: visible;
+}
+
+.md-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+  color: black;
+  background: #f5f5f5;
+  position: relative;
+  border-radius: 0px;
+  /*border: 0.3em black solid;*/
+  margin: 0 auto;
+  -moz-box-shadow: 0 0 7px #727272;
+  -webkit-box-shadow: 0 0 7px #727272;
+  -o-box-shadow: 0 0 7px #727272;
+  box-shadow: 0 0 7px #727272;
+}
+
+.md-content h3 {
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 300;
+  opacity: 1;
+  background-color: black;
+  color: #8A2223;
+}
+
+.md-content > div {
+  padding: 15px 40px 30px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.15em;
+}
+
+.md-content > div p {
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 400;
+}
+
+.md-content .correo, .md-content .password {
+  background-color: #8A2223;
+  color: black;
+  border: 1px solid #298ACC;
+  display: block;
+  margin: 15px auto;
+  padding: 0.3em 0.6em;
+}
+
+::-webkit-input-placeholder {
+  color: white;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: white;
+}
+
+.md-content a {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
+  padding: 0.2em;
+  width: 5em;
+  margin: 1.5em auto 0em;
+  background: black;
+  color: #8A2223;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.md-content a:hover {
+  background: #8A2223;
+  color: black;
+}
+
+/* Individual modal styles with animations/transitions */
+/* Effect 1: Fade in and scale up */
+.md-effect-1 .md-content {
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.md-show.md-effect-1 .md-content {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+/**********************************************************/
+#historia_brigantium {
+  margin-top: 50px;
+}
+
+.titulo_seccion {
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 20px 0px 20px 0px;
+  margin: 0px;
+}
+
+.titulo_seccion h1 {
+  position: relative;
+  display: inline;
+}
+
+.titulo_seccion h1 a {
+  font-size: 2.8em;
+  color: black;
+  font-weight: 300;
+}
+
+.interrogante {
+  font-size: 0.5em !important;
+  background-color: #53A5DC;
+  font-weight: 300;
+  vertical-align: top;
+  padding: 0.2em;
+  border-radius: 10px;
+}
+
+.titulo_seccion span {
+  font-size: 1.2em;
+}
+
+#header {
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#header h1 span {
+  font-size: 0.8em;
+}
+
+#header h1 {
+  font-size: 4em;
+  color: #33ADFF;
+  font-weight: 300;
+}
+
+.subtitulo {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8C7070;
+}
+
+#header h4 {
+  font-size: 0.7em;
+  color: white;
+}
+
+/********
+
+Estilos información secciones
+
+*********/
+.informacion {
+  position: absolute;
+  top: -12px;
+  right: -30px;
+  text-align: center;
+  background-color: rgba(138, 34, 35, 0.4);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 26px;
+  cursor: default;
+}
+
+.informacion:before {
+  content: '?';
+  font-weight: bold;
+  color: #f5f5f5;
+}
+
+.informacion:hover p {
+  display: block;
+  transform-origin: 100% 0%;
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.informacion p {
+  /* The tooltip */
+  display: none;
+  text-align: left;
+  background-color: #1E2021;
+  padding: 20px;
+  width: 300px;
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  right: -4px;
+  color: #FFF;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.informacion p:before {
+  /* The pointer of the tooltip */
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-bottom-color: #1E2021;
+  right: 10px;
+  top: -12px;
+}
+
+.informacion p:after {
+  /* Prevents the tooltip from being hidden */
+  width: 100%;
+  height: 40px;
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+}
+
+#slider {
+  height: 750px;
+  max-width: 100%;
+  background-color: black;
+}
+
+#yacimiento {
+  height: 750px;
+  min-width: 100%;
+  background-color: black;
+}
+
+/*Características del mapa y de los elementos dentro del mismo (cartelas, controladores...)*/
+#map {
+  height: 600px;
+  max-width: 100%;
+}
+
+.leaflet-control-layers {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0px;
+}
+
+/* general toolbar styles (estilos generales de los controladores de leaflet, entre los que se encuentra el controlador del zoom.)*/
+.leaflet-bar {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.leaflet-bar a:hover {
+  background-color: white;
+}
+
+.leaflet-bar a:first-child,
+.leaflet-bar a:last-child {
+  border-radius: 0px;
+}
+
+/*Estilo de las cartelas del mapa*/
+.leaflet-sidebar > .leaflet-control {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0px;
+}
+
+.leaflet-sidebar .close {
+  background: transparent;
+  color: rgba(136, 136, 136, 0.7);
+  font-size: 25pt;
+}
+
+.nombre_yacimiento {
+  font-family: lato;
+  background-color: #f5f5f5;
+  color: #33ADFF;
+  text-align: center;
+}
+
+.nombre_yacimiento h1 {
+  font-size: 2.5em;
+  text-transform: uppercase;
+}
+
+.cartela .seccion {
+  text-transform: uppercase;
+  padding: 20px 0px 10px 0px;
+  text-align: center;
+  letter-spacing: 0.4em;
+}
+
+.cartela p {
+  color: black;
+}
+
+.cartela .numero_cartela {
+  color: white;
+  background-color: rgba(51, 173, 255, 0.6);
+  margin: 30px auto 0px auto;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.cartela .numero_cartela a {
+  text-decoration: none;
+  color: white;
+}
+
+.coordenadas {
+  margin-top: 10px;
+  text-align: center;
+  color: rgba(136, 136, 136, 0.7);
+}
+
+#slider {
+  position: relative;
+  overflow: auto;
+}
+
+#imagen_slider {
+  width: 50px;
+  height: 50px;
+}
+
+#contenido_contexto {
+  width: 100%;
+  height: 700px;
+}
+
+/*# sourceMappingURL=style.css.map */

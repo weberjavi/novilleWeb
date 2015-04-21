@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--Las dos siguientes etiquetas meta son de el slider de blueprint-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>NOVILLE | Experimento de Arqueología y Web</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+		<!--Ésta hoja de estilo es la que define el aspecto del mapa y los controladores del mismo-->
+		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+		 <!--Ésta hoja de estilo es la que define la cartela lateral-->
+		 <link rel="stylesheet" type="text/css" href="css/L.Control.Sidebar.css">
+
+		 
+		 <!--Estas dos hojas de estilo son las que determinan el aspecto del slider y de las ventanas modales de cordrops>
+		 <link rel="stylesheet" type="text/css" href="css/default.css" /-->
+		 <link rel="stylesheet" type="text/css" href="css/component.css" />
+		 <link rel="stylesheet" type="text/css" href="css/pruebas.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+		 <!--Éste script hace referencia a la librería leaflet, que hace posible visualizar el mapa-->
+		 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+		 <!--Éste script hace referencia al plugin necesario para poder ver la capa de stamen (watercolor)-->
+		 <script src="js/leaflet-providers.js" async></script>
+		 <!--Los dos siguientes scripts son para poder visualizar la capa de google. La primera hace referencia a la api de google maps y la segunda indica donde se encuentra el plugin en relación con el archivo html -->
+		<script src="http://maps.google.com/maps/api/js?v=3&sensor=false" ></script>
+		<script src="plugins/leaflet-plugins-master/layer/tile/Google.js" async></script>
+	</head>
+	
+
+	<body>
+
+		<img src="novilleLogo.svg" class="logo">
+
+		<!--
+		//////Ventanas pop-up situadas debajo del logo.////
+		////// Aquí se encuentran tanto los botones como las ventanas con su contenido////
+		-->
+		<nav id="nav_general">
+			<ul>
+				<li class="proyecto" ><a class="md-trigger" data-modal="modal-1" href="#">El Proyecto</a></li>
+				<li class="registro"><a class="md-trigger" data-modal="modal-2" href="#">Contacto</a></li>
+				<li class="newsletter"><a class="md-trigger" data-modal="modal-3" href="#">créditos</a></li>
+			</ul>
+		</nav>
+
+		<div class="md-modal md-effect-1" id="modal-1">
+			<div class="md-content">
+				<h3>EL PROYECTO</h3>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					<a class="md-close" href="#">CLOSE</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="md-modal md-effect-1" id="modal-2">
+			<div class="md-content">
+				<h3>REGISTRO</h3>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					<form>
+						<input type="Email" placeholder="Correo Electrónico" class="correo">
+						<input type="password" placeholder="Contraseña" class="password">
+					</form>
+					<a class="md-close" href="#">Enviar</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="md-modal md-effect-1" id="modal-3">
+			<div class="md-content">
+				<h3>CRÉDITOS</h3>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					<form>
+						<input type="Email" placeholder="Correo Electrónico" class="correo">
+					</form>
+					<a class="md-close" href="#">Enviar</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="md-overlay"></div><!-- the overlay element -->
+
+		<!-- Librerías necesarias para activar la ventana pop-up.
+		classie.js by @desandro: https://github.com/desandro/classie -->
+		<script src="js/classie.js" async></script>
+		<script src="js/modalEffects.js" async></script>
+		<script src="js/cssParser.js" async></script>
+		<!--
+		//////Final del código de las Ventanas pop-up.////
+		-->
+
+
+
+			<div id="historia_brigantium" class="titulo_seccion">
+				<h1>
+					<a id="cona" href='#historia_brigantium'>CONTEXTO HISTÓRICO</a>
+					<div class="informacion">
+    					<p>Información sobre la sección.</p>
+					</div>
+				</h1>
+				<h2 class="subtitulo">política·romana·y·el·noroeste</h2>
+				<hr>
+
+			</div>
+				<iframe id="contenido_contexto" src="hackYourMaps.html">
+			</iframe>
+
+			<div id="titulo_mapa" class="titulo_seccion">
+				<h1>
+					<a id="boton_mapa" href='#titulo_mapa'>EL ENTORNO DE NOVILLE</a>
+					<div class="informacion">
+    					<p>Información sobre la sección.</p>
+					</div>
+				</h1>
+				<h2 class="subtitulo">yacimientos·romanos·en·el·arco·ártabro</h2>
+				<hr>
+			</div>
+			
+			
+			<!--Estos div's son dentro de los cuales se introducirá la información de los yacimientos, empleando html.-->
+			<div id="cartelas">
+				
+				<div id="sidebar_cidadela" class="cartela">
+					<div class="nombre_yacimiento">
+	        			<h1>CIDADELA</h1>
+	        		</div>
+	        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>  
+	    		</div>
+
+	    		<div id="sidebar_pita" class="cartela">
+
+	        		<h2 class="coordenadas">Lat. 43.38 || Lon. -8.40</h2>
+
+	        		<div class="nombre_yacimiento">
+	        			<h1>maría pita</h1>
+	        		</div> 
+	        		
+	        		<h2 class="seccion">características del yacimiento</h2>  
+	        		<p>Non se coñece a data exacta da súa construción, aínda que a inscrición conservada ao seu pé, ofrecida polo architectus lusitano Caio Sevio Lupo, permite supoñer que a obra é da súa autoría e, por tanto, datable nos tempos de Claudio, emperador romano de mediados do s. I. </br>
+					As escavacións arqueolóxicas efectuadas na plataforma que sostén a torre entre 1992-1994 achegaron importantes datos para o seu coñecemento. Grazas a elas sabemos que entre os séculos V e X esboroáronse os muros exteriores que a recubrían e as escaleiras que o rodeaban. Os comezos deste proceso de destrución puido terse iniciado en torno ao séculos V-VI, cando parece producirse o abandono da actividade fareira.</p>
+					<h2 class="seccion">Intervencións arqueolóxicas</h2>
+					<p>Entre os anos 1992 e 1994 realizáronse varias campañas de estudio tanto do entorno inmediato da  Torre de Hercules así coma un estudio estratigráfico dos paramentos da propia construcción. Estas intervencións foron dirixidas conxuntamente por José María Bello Diéguez e Luis Caballero Zoreda.</p>	
+					<h2 class="seccion">Memorias de intervención</h2>	
+					<p>Desafortunadamente non se depositaron no Castelo de San Antón as memorias das intervencións arqueolóxicas realizadas a principios da década dos 90 do século XX. Pero por outra banda si que se pode acceder ao estudio da construcción da Torre nas súas diferentes fases realizado por Luís Caballero Zoreda e Pablo Latorre González-Moro así como a un artigo referente as intervencións arqueolóxicas realizado por José María Bello Diéguez . Pode acceder a descarga dos mesmos en formato PDF na sección de descargas ou premendo o número ao final desta ficha.</p>
+	    		</div>
+
+	    		<div id="sidebar_torre" class="cartela">
+	    			<h2 class="coordenadas">Lat. 43.38 || Lon. -8.40</h2>
+	    			<div class="nombre_yacimiento">
+	        			<h1>TORRE DE HERCULES</h1>
+	        		</div> 
+
+	        		<h2 class="seccion">historia do Xacemento</h2>  
+	        		<p>Non se coñece a data exacta da súa construción, aínda que a inscrición conservada ao seu pé, ofrecida polo architectus lusitano Caio Sevio Lupo, permite supoñer que a obra é da súa autoría e, por tanto, datable nos tempos de Claudio, emperador romano de mediados do s. I. </br>
+					As escavacións arqueolóxicas efectuadas na plataforma que sostén a torre entre 1992-1994 achegaron importantes datos para o seu coñecemento. Grazas a elas sabemos que entre os séculos V e X esboroáronse os muros exteriores que a recubrían e as escaleiras que o rodeaban. Os comezos deste proceso de destrución puido terse iniciado en torno ao séculos V-VI, cando parece producirse o abandono da actividade fareira.</br>
+					En época medieval recupérase o edificio, pero xa non como faro, senón como atalaia para a vixía marítima, cando era coñecida como Castelo Vello. No século XIII documéntase por primeira vez a súa actual denominación de Torre de Hércules, recollida na Estoria de España do rei Afonso X. Sen embargo, por estas datas xa estaba sendo utilizada como canteira para as construcións da cidade coruñesa, proceso que continuou alomenos ata o século XVI, cando se prohibe extraer pedra por orde municipal. </br>
+					Adquire o aspecto actual a finais do século XVIII, tras a rehabilitación efectuada polo enxeñeiro militar Eustaquio Giannini, quen refixo as escaleiras, o muro exterior e engadiu os corpos arquitectónicos superiores, máis tarde rematados polo fanal para a lanterna. Dende aquela ata hoxe a Torre de Hércules é o faro imprescindible para a guía de navegantes que fora en época romana.</p>
+					<h2 class="seccion">Intervencións arqueolóxicas</h2>
+					<p>Entre os anos 1992 e 1994 realizáronse varias campañas de estudio tanto do entorno inmediato da  Torre de Hercules así coma un estudio estratigráfico dos paramentos da propia construcción. Estas intervencións foron dirixidas conxuntamente por José María Bello Diéguez e Luis Caballero Zoreda.</p>	
+					<h2 class="seccion">Memorias de intervención</h2>	
+					<p>Desafortunadamente non se depositaron no Castelo de San Antón as memorias das intervencións arqueolóxicas realizadas a principios da década dos 90 do século XX. Pero por outra banda si que se pode acceder ao estudio da construcción da Torre nas súas diferentes fases realizado por Luís Caballero Zoreda e Pablo Latorre González-Moro así como a un artigo referente as intervencións arqueolóxicas realizado por José María Bello Diéguez . Pode acceder a descarga dos mesmos en formato PDF na sección de descargas ou premendo o número ao final desta ficha.</p>
+					<h2 class="numero_cartela">
+						<a href="#">1</a>
+					</h2>
+	    		</div>
+
+	    		<div id="sidebar_canton" class="cartela">
+	    			<div class="nombre_yacimiento">
+	    				<h1>VILA CANTÓN GRANDE</h1> 
+	    			</div>  
+	    			<h2 class="seccion">historia do Xacemento</h2>  
+	        		<p></p>
+					<h2 class="seccion">Intervencións arqueolóxicas</h2>
+					<p></p>	
+					<h2 class="seccion">Memorias de intervención</h2>	
+					<p>Desafortunadamente non se depositaron no Castelo de San Antón as memorias das intervencións arqueolóxicas realizadas a principios da década dos 90 do século XX. Pero por outra banda si que se pode acceder ao estudio da construcción da Torre nas súas diferentes fases realizado por Caballero Zoreda. Pode acceder a descarga do mesmo en formato PDF na sección de descargas.</p>
+					<h2 class="numero_cartela">
+						<a href="#">2</a>
+					</h2>
+	    		</div> 		
+	    		
+
+	    		<div id="sidebar_canovas" class="cartela">
+	    			<div class="nombre_yacimiento">
+	    				<h1>CANOVAS LACRUZ</h1>
+	    			</div>
+	    			<p>Parrote. Praza Xeral Canovas Lacruz</br>Altoimperial. (Gasificación)</p>
+	    		</div>
+
+	    		<div id="sidebar_realLuengo" class="cartela">
+	    			<div class="nombre_yacimiento">
+	    				<h1>Rúa Real</h1>
+	    			</div>
+	    			<p>Necrópolis. Luengo</br>
+	    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>	    			
+	    		</div>
+
+	    		<div id="sidebar_teatro" class="cartela">
+	    			<div class="nombre_yacimiento">
+	    				<h1>Teatro Rosalía de Castro</h1>
+	    			</div>
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>   
+	    		</div>
+
+	    		<div id="sidebar_santiago19" class="cartela">
+	    			<div class="nombre_yacimiento">
+	    				<h1>Rúa Santiago 19</h1> 
+	    			</div>    
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>  		
+	    		</div>
+	    	</div>
+
+			<div id="map"></div>
+
+				<script type="text/javascript" src="js/L.Control.Sidebar.js"></script>
+				<script type="text/javascript" src="js/mapa.js"></script>
+				<script type="text/javascript" src="js/yacimientos.js"></script>
+			
+
+			<div id="castelo" class="titulo_seccion"></a>
+				<h1>
+					<a id="boton_castelo" href='#castelo'>CAMPAÑA DE 1989</a>
+					<div class="informacion">
+    					<p>Información sobre la sección.</p>
+					</div>
+				</h1>
+				<h2 class="subtitulo">excavación·arqueológica</h2>
+				<hr>
+			</div>
+			<div id="slider">
+				
+			</div>
+		<!--script src="js/jquery.cbpContentSlider.min.js"></script>
+		<script>
+			$(function() {
+				
+				$( '#cbp-contentslider' ).cbpContentSlider();
+			});
+		</script-->
+
+			</div>
+
+
+		
+
+
+			<script type="text/javascript">
+/*La primera función .ready indica que debe haberse cargado la página para comenzar a leer esta parte del código*/
+				$(document).ready(function(){				
+
+/*Esta parte en primer lugar esconde el mapa y posteriormente determina la acción a realizar una vez se haga click en el botón mapa: en este caso hacer aparecer y desaparecer el mapa mediante la opcion .toggle("slow"). La opción 'return false' impide que al clickar en el <a> éste te lleve a la dirección indicada en la href=""*/
+					
+					$("#contenido_contexto").hide();
+					$("#cona").click(function () {
+	    				$("#contenido_contexto").slideToggle("slow");
+						return false;
+					});	
+
+					$("#map").hide();
+					$("#boton_mapa").click(function () {
+	    				$("#map").slideToggle("slow");
+						return false;
+					});	
+
+					$("#slider").hide();
+					$("#boton_castelo").click(function () {
+	    				$("#slider").slideToggle("slow");
+						return false;
+					});	
+
+/*En esta parte se indica que dependiendo de la clase que tenga el botón en cada momento realice una acción u otra; en un casohacer scroll de la sección y en otro hacer scroll al header*/	
+					
+					$("#cona").click(function() {
+					    if($(this).hasClass('arrow_down'))
+					       close();
+					    else{
+					        $('html, body').animate({
+					        scrollTop: $("#historia_brigantium").offset().top
+					        }, 800);
+					    }
+					});
+
+					$("#boton_mapa").click(function() {
+					    if($(this).hasClass('arrow_down'))
+					       close();
+					    else{
+					        $('html, body').animate({
+					        scrollTop: $("#titulo_mapa").offset().top
+					        }, 800);
+					    }
+					});
+
+					$("#boton_castelo").click(function() {
+					    if($(this).hasClass('arrow_down'))
+					       close();
+					    else{
+					        $('html, body').animate({
+					        scrollTop: $("#castelo").offset().top
+					        }, 800);
+					    }
+					});
+
+					$("#boton_museos").click(function() {
+					    if($(this).hasClass('arrow_down'))
+					       close();
+					    else{
+					        $('html, body').animate({
+					        scrollTop: $("#museos").offset().top
+					        }, 800);
+					    }
+					});
+
+					function close(){
+					    $('html, body').animate({
+					        scrollTop: $("#header").offset().top
+					        }, 800);
+					}
+
+					
+					
+					
+				});
+			</script>
+	
+	</body>
+</html>
