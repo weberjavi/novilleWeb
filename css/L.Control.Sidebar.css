@@ -20,7 +20,6 @@
 .leaflet-sidebar.right {
     right: -500px;
     transition: right 0.5s, width 0.5s;
-
     padding-left: 0;
 }
 
@@ -164,6 +163,5 @@
     -webkit-border-radius: 16px;
     border-radius: 16px;
     cursor: pointer;
-
     z-index: 8;
 }

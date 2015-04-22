@@ -66,8 +66,8 @@ html {
 /* 	Evita que las imágenes aumenten de tamaño al aplicarles márgenes.
 	Referencia a ésta situación en los comentarios de:
 	https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-*/
-img { box-sizing: content-box; }
+
+img { box-sizing: content-box; }*/
 
 /* 	Esta declaración obliga a los elementos a constreñir su ancho
 	al ancho del elemento que los contiene. Permitiendo así que 
